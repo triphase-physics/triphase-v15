@@ -1,0 +1,16 @@
+# Don't upload unreleased work
+_UNRELEASED/
+
+# Don't upload old archived files
+Archive_Old_Versions/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Generated images (users should generate their own)
+*.png
+
+# OS files
+.DS_Store
+Thumbs.db
