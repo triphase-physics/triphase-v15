@@ -1,10 +1,13 @@
-# TriPhase — Maxwell's Quantum Resonance
+# TriPhase Physics Framework
+## Maxwell's Quantum Resonance
 
-**A wave-mechanics framework: the fundamental constants derived from the two measured properties of free space (ε₀, μ₀), by mechanism — not fitted.**
+**The fundamental constants derived from the two measured properties of free space (ε₀, μ₀), by mechanism — not fitted.**
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17855383.svg)](https://doi.org/10.5281/zenodo.17855383)
 
 Framework (V16): [10.5281/zenodo.17855383](https://doi.org/10.5281/zenodo.17855383) · Companion papers: [10.5281/zenodo.18432669](https://doi.org/10.5281/zenodo.18432669)
+
+> **Versions.** Wave mechanics runs through every version; the name *Maxwell's Quantum Resonance* and the Elmer FEM are what's new in **V17** (this package) — not the method, and not present in V16. The **V16** framework record — the current release — is on Zenodo (DOI 10.5281/zenodo.17855383). Older **V15** material is retired to [`v15/`](v15) and preserved at git tag `v15-legacy`.
 
 ---
 
@@ -30,9 +33,17 @@ G is the worst-measured constant (labs scatter ~0.05%), so five-figure agreement
 
 ---
 
+## What's in this repository
+
+- **[`v17/`](v17)** — *current.* The Maxwell's Quantum Resonance replication package — the four runnable scripts and the Elmer Maxwell FEM, linked from the "Breaking Down a Unit" reply.
+- **[`v16/`](v16)** — the framework record, published on **Zenodo** (DOI 10.5281/zenodo.17855383); pointer here.
+- **[`v15/`](v15)** — retired earlier material, kept for history (also at tag `v15-legacy`).
+
+---
+
 ## Run it (free tools only)
 
-The replication package is in [`v17/Maxwells_Quantum_Resonance/`](v17/Maxwells_Quantum_Resonance):
+The current package is in [`v17/Maxwells_Quantum_Resonance/`](v17/Maxwells_Quantum_Resonance):
 
 ```bash
 cd v17/Maxwells_Quantum_Resonance
@@ -54,9 +65,20 @@ This package establishes **reproducibility** — the computations do what the wr
 
 On the multi-discipline agreement: the same integer 137 is also independently expressible as a figurate identity (T₁₇ − 2⁴ = 153 − 16) and a Lie-algebra / Eisenstein identity (12² − 7 = 144 − 7). Those are **corroboration** — internal robustness, other disciplines landing on the same value — **not** the derivation, and not independent external proof. The derivation is the wave-mechanics mechanism; the pure-math identities only land on the number. `path_convergence_137.py` states this limit in its own output.
 
-Cosmology results (redshift as impedance-path drag ln(1+z), MOND's acceleration scale, galaxy rotation without dark matter) are the framework's broader program — tested in the companion papers and the `cosmology/` script, not headlined here.
+Cosmology results (redshift as impedance-path drag ln(1+z), MOND's acceleration scale, galaxy rotation without dark matter) are the framework's broader program — tested in the companion papers, not headlined here.
 
 Audit it, reproduce it, or break it — all three are welcome.
+
+---
+
+## Changelog
+
+An honest record of edits to any script or simulation file in this repository.
+
+- **2026-07-10**
+  - `v17/…/G_bridge_verification.py` — α log-tail corrected from 2 to 3 terms → 137.035999010, matching `path_convergence_137.py`.
+  - Root README rewritten to lead with the mechanism (replacing the earlier promotional page; the circular 2π·a₀/λ_C identity is no longer presented as a derivation).
+  - Repository renamed `triphase-v15` → `triphase`; V15 material moved to `v15/` and tagged `v15-legacy`.
 
 ---
 
@@ -75,7 +97,7 @@ Christian R. Fuccillo — Magnetic Innovative Solutions LLC. Medical-imaging eng
 ```bibtex
 @misc{fuccillo2026triphase,
   author    = {Fuccillo, Christian R.},
-  title     = {TriPhase: Maxwell's Quantum Resonance},
+  title     = {TriPhase Physics Framework: Maxwell's Quantum Resonance},
   year      = {2026},
   publisher = {Zenodo},
   doi       = {10.5281/zenodo.17855383}
