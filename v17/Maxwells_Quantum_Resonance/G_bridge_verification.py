@@ -102,7 +102,7 @@ beta_sq_log = 1 + sp.log(2)/N              # = 1 + ln(2)/137  (the true log form
 # The rational (5/6)^2/N used above is the CLOSED-FORM SHADOW of this log; they
 # agree to ~0.19%, below G's measurement precision. The SAME wave interaction puts
 # a log tail on alpha, and there -- where measurement IS precise -- it lands to 9 figures:
-alpha_inv_from_tail = N + sp.log(N)/N + sp.Rational(1,3)*sp.log(N)/N**2  # 137 + ln137/137 + (1/3)ln137/137^2
+alpha_inv_from_tail = N + sp.log(N)/N + sp.Rational(1,3)*sp.log(N)/N**2 - sp.Rational(1,3)*sp.log(N)/N**3  # 137 + ln137/137 + (1/3)ln137/137^2 - (1/3)ln137/137^3
 
 # G with the self-term restored (the full mechanism, not the lossless-count shorthand):
 G_full  = G_bare * beta_sq
@@ -127,7 +127,7 @@ print("    LOGARITHMICALLY. The tail is mechanism, not a fudge. Octave base = 2.
 print(f"    beta^2, true log form    = 1 + ln(2)/137      = {sp.N(beta_sq_log,10)}")
 print(f"    beta^2, rational shadow  = 1 + (5/6)^2/137     = {sp.N(beta_sq,10)}   (agree ~0.19%)")
 print("    SAME tail nails alpha (where measurement is precise, to 9 figures):")
-print(f"      137 + ln137/137 + (1/3)ln137/137^2 = {sp.N(alpha_inv_from_tail,12)}")
+print(f"      137 + ln137/137 + (1/3)ln137/137^2 - (1/3)ln137/137^3 = {sp.N(alpha_inv_from_tail,12)}")
 print("      measured alpha^-1                   = 137.035999177")
 print()
 print("  G, bare (lossless count):   G = (15/2)*E0        = %s" % sp.N(G_bare,8))
