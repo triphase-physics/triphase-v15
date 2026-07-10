@@ -1,0 +1,10 @@
+!------ Skeleton for body section -----
+Body 1
+  Name = vacuum
+End
+
+!------ Skeleton for boundary section -----
+Boundary Condition 1
+  Name = pec
+End
+
