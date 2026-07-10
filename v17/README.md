@@ -32,4 +32,4 @@ column and it still runs). It does not by itself prove the framework is how
 nature works; that needs independent replication and the experiments described
 in the reply.
 
-Framework DOI: 10.5281/zenodo.17968821 · companion papers: 10.5281/zenodo.18432669
+Framework DOI: 10.5281/zenodo.17855383 · companion papers: 10.5281/zenodo.18432669

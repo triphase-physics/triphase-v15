@@ -27,4 +27,4 @@ The AI-literacy part: as your Claude reviews it, notice where it states somethin
 ## Honest scope
 This establishes internal **reproducibility** — that the computations do what the write-up says, with no hidden insertion of the targets. It does **not** by itself prove the framework is how nature works; that needs independent replication and the experimental tests described in the document. Audit it, break it, or reproduce it — all three are welcome.
 
-Framework: DOI 10.5281/zenodo.17968821 · companion papers 10.5281/zenodo.18432669.
+Framework: DOI 10.5281/zenodo.17855383 · companion papers 10.5281/zenodo.18432669.

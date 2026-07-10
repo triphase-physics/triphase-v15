@@ -62,4 +62,4 @@ In every script the **measured constants (CODATA) appear only in a clearly-marke
 ## Honest scope
 This package establishes **internal reproducibility** — that the computations do what the write-up says, without hidden insertion of the target values. It does **not** by itself establish that nature realizes this framework; that requires the independent replication invited here, plus the experimental tests (the frequency-signature measurement of G; the three-phase droplet experiment) described in the companion discussion. Audit it, break it, or reproduce it — all three are welcome.
 
-**Citation:** TriPhase framework, DOI 10.5281/zenodo.17968821 · companion papers 10.5281/zenodo.18432669.
+**Citation:** TriPhase framework, DOI 10.5281/zenodo.17855383 · companion papers 10.5281/zenodo.18432669.
