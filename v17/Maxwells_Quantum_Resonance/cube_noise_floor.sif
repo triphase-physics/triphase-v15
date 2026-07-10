@@ -1,0 +1,59 @@
+! NOISE FLOOR from real Maxwell FEM modes of a finite E-U cavity.
+! Same box + real eps0/mu0 as the atom run; request MANY eigenmodes so the
+! mode DENSITY can be read. Expect dN/d(omega) ~ omega^2 (Weyl) -> rho ~ omega^3.
+! NOTE (provenance): the cavity side a = electron Compton wavelength is a FRAMEWORK
+! DERIVATIVE, lambda_C = 2*pi*lam0/[315*(1-12/N^2+1/N^3)] (base E-U wavelength lam0 /
+! electron mode-count 315; N=137) -- NO electron mass, NOT a CODATA value. omega^3 floor is
+! scale-free (Maxwell scale-invariance), so the shape does not depend on a at all.
+Check Keywords "Warn"
+Header
+  Mesh DB "." "mesh_atomic"
+End
+Simulation
+  Max Output Level = 4
+  Coordinate System = "Cartesian"
+  Simulation Type = Steady State
+  Steady State Max Iterations = 1
+  Output Intervals(1) = 1
+End
+Constants
+  Permittivity of Vacuum = 8.8541878128e-12
+  Permeability of Vacuum = 1.25663706212e-6
+End
+Body 1
+  Equation = 1
+  Material = 1
+End
+Material 1
+  Relative Permittivity = 1.0
+  Relative Permeability = 1.0
+End
+Equation 1
+  Active Solvers(1) = 1
+End
+Solver 1
+  Equation = "VectorWave"
+  Variable = E
+  Procedure = "EMWaveSolver" "EMWaveSolver"
+  Linear System Solver = String "Direct"
+  Linear System Direct Method = "umfpack"
+  Use Global Mass Matrix = True
+  Eigen Analysis = True
+  Eigen System Values = 250
+  Eigen System Lanczos Vectors = 600
+  Eigen System Convergence Tolerance = 1.0e-5
+  Eigen System Select = smallest magnitude
+  Eigen System Shift = Real 3.5e41
+End
+Solver 2
+  Equation = "save scalars"
+  Procedure = "SaveData" "SaveScalars"
+  Save Eigenfrequencies = Logical True
+  Filename = eigenfreqs_noise.dat
+  Show Norm Index = 1
+End
+Boundary Condition 1
+  Name = "pec"
+  Target Boundaries(1) = 1
+  E {e} = Real 0
+End

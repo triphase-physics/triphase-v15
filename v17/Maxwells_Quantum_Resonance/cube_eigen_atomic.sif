@@ -1,0 +1,82 @@
+! Paper X -- (1,1,1) closure-mode EM eigenanalysis, ATOMIC SCALE + REAL UNITS.
+! Cube side a = electron Compton wavelength 2.42631e-12 m (cube_cavity_atomic.geo).
+! REAL eps0/mu0 (NOT normalized) -> c=1/sqrt(eps0 mu0)=2.998e8 internally ->
+! the eigenvalues are real omega^2 (rad/s)^2 and f=sqrt(omega^2)/2pi comes out in
+! real Hz. Expected: triplet near f=c/(a*sqrt2)=8.74e19 Hz (omega^2=3.01e41);
+! (1,1,1) closure near f=c*sqrt3/(2a)=1.07e20 Hz (omega^2=4.52e41). Shift sits
+! between triplet and closure to catch both, mirroring the lab-scale run's shift.
+Check Keywords "Warn"
+
+Header
+  Mesh DB "." "mesh_atomic"
+End
+
+Simulation
+  Max Output Level = 5
+  Coordinate System = "Cartesian"
+  Simulation Type = Steady State
+  Steady State Max Iterations = 1
+  Output Intervals(1) = 1
+End
+
+Constants
+  Permittivity of Vacuum = 8.8541878128e-12
+  Permeability of Vacuum = 1.25663706212e-6
+End
+
+Body 1
+  Equation = 1
+  Material = 1
+End
+
+Material 1
+  Relative Permittivity = 1.0
+  Relative Permeability = 1.0
+End
+
+Equation 1
+  Active Solvers(2) = 1 2
+End
+
+Solver 1
+  Equation = "VectorWave"
+  Variable = E
+  Procedure = "EMWaveSolver" "EMWaveSolver"
+  Linear System Solver = String "Direct"
+  Linear System Direct Method = "umfpack"
+  Use Global Mass Matrix = True
+  Eigen Analysis = True
+  Eigen System Values = 8
+  Eigen System Lanczos Vectors = 40
+  Eigen System Convergence Tolerance = 1.0e-6
+  Eigen System Select = smallest magnitude
+  Eigen System Shift = Real 3.5e41
+End
+
+Solver 2
+  Equation = "calcfields"
+  Procedure = "EMWaveSolver" "EMWaveCalcFields"
+  Linear System Symmetric = False
+  Calculate Elemental Fields = False
+  Calculate Nodal Fields = True
+  Steady State Convergence Tolerance = 1
+  Linear System Solver = "direct"
+  Linear System Direct Method = umfpack
+  Calculate Electric field derivatives = Logical True
+  Exec Solver = "before saving"
+End
+
+Solver 3
+  Equation = "save scalars"
+  Procedure = "SaveData" "SaveScalars"
+  Save Eigenfrequencies = Logical True
+  Filename = eigenfreqs_atomic.dat
+  Exec Solver = "after saving"
+  Show Norm Index = 1
+End
+
+Boundary Condition 1
+  Name = "pec"
+  Target Boundaries(1) = 1
+  E {e} = Real 0
+End
